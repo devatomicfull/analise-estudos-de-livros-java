@@ -1,0 +1,117 @@
+# ======================
+# Java - Geral
+# ======================
+*.class
+*.jar
+*.war
+*.ear
+
+# Arquivos temporários e de log
+*.log
+*.tmp
+*.swp
+*.bak
+
+# Arquivos de compilação
+bin/
+out/
+build/
+target/
+
+# ======================
+# IntelliJ IDEA
+# ======================
+.idea/
+*.iml
+*.iws
+*.ipr
+*.class
+*.hprof
+
+# ======================
+# Eclipse
+# ======================
+.project
+.classpath
+.cproject
+.settings/
+.metadata/
+
+# ======================
+# NetBeans
+# ======================
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# ======================
+# Maven
+# ======================
+target/
+dependency-reduced-pom.xml
+release.properties
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+
+# ======================
+# Gradle
+# ======================
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# ======================
+# VS Code (caso use)
+# ======================
+.vscode/
+
+# ======================
+# Arquivos do sistema
+# ======================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ======================
+# Banco de dados locais e backups
+# ======================
+*.db
+*.sql
+*.sqlite
+*.mv.db
+*.h2.db
+*.backup
+
+# ======================
+# Arquivos pessoais ou específicos de estudo
+# ======================
+*.zip
+*.rar
+*.7z
+*.pdf
+*.doc
+*.docx
+*.odt
+*.ppt
+*.pptx
+*.xlsx
+*.xls
+
+# ======================
+# Logs e arquivos do sistema operacional
+# ======================
+nohup.out
+*.pid
+*.seed
+
+# ======================
+# Linux e editor de texto
+# ======================
+*~
+*#
+.#*

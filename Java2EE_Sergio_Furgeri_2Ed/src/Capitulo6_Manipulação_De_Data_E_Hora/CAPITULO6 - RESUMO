@@ -1,0 +1,93 @@
+CAPITULO6 - RESUMO: Manipulação de DATA e HORA
+
+- Introduzir o desenvolvedor na utilização de classes externas com o uso de diretivas
+de compilação
+- Demonstrar os principais metodos para o manuseio de data hora
+- Fornecer subsidios para que o leitor possa criar paginas que exibem mensagens de forma
+dinamica
+- Simular a utilização de objetos do tipo data em paginas da web.
+
+DECLARAÇÃO E INICIALIZAÇÃO DE OBJETOS DATE
+	A manipulação de data (e tambem de hora) exige a utilização de uma classe externa da
+	linguagem java: a Classe Date.
+	
+	Para utilizar uma classe externa, é necessario que ela esteja na mesma pasta da 
+	aplicação, como ja mostrado no capitulo anterior.
+	Outra forma é utilizar classes externas por meio da diretiva IMPORT.
+	As diretivas import deve ser inseridas antes da declaração do nome da classe:
+		SINTAXE usada na diretiva import;
+			
+			import nome-do-pacote ou nome-da-classe
+			
+		Exemplo com Date;
+			import java.util.Date;
+		
+	Declarar um objeto Date SINTAXE;
+		Date <nome-do-objeto>;
+		Date data;
+		
+	Dessa forma o compilador compreende que data sera um objeto declarado a partir da 
+	Classe Date.
+	Para um objeto ser usado, ele precisa ser inicializado.
+		Compreenda a inicialização como algo que fornece um valor inicial ao objeto.
+		Para a inicialização dos objetos é usada a instrução new!
+		SINTAXE:
+			data = new Date();
+			
+		Esta declaração indica que o objeto data sera  inicializado com a data e hora
+		atuais do sistema(DEFAULT).
+		Para inicializar o objeto com outra data, é necessario inseri-la nos parenteses,
+		por exemplo: data = new Date("October 23, 2001").
+		Nesse caso, o objeto data sera inicializado com a data 23 de outubro de 2001 e
+		com a hora 0:0:0.
+	
+	DECLARAÇÃO E INICIALIZAÇÃO
+		Nome-da-classe <nome do objeto> = new nome-da-classe
+		
+	exemplo:
+		Date data = new Data();
+
+Métodos para a Manipulação da Data
+	A classe Date fornece muitos métodos úteis para obtenção e tratamento
+	com datas e horas. Esses métodos estão sempre associados ao objeto criado a
+	partir de Date. Para usar os métodos, é utilizada a SINTAXE: 
+		
+		nome-do-objeto.nome-do-método
+		
+		A seguir, são listados os métodos da classe Date.
+	-data.getDate() - Retorna o dia do mês (1-31) armazenado no objeto data.
+	-data.getDay() - Retorna o dia da semana (0 para domingo até 6 para Sábado)
+	 armazenado no objeto data.
+	-data.getMonth() - Retorna o mês (0 para janeiro até 11 para dezembro)armazenado
+	 no objeto data.
+	-data.getYear() - Retorna o ano armazenado no objeto data. Esse método retorna os
+	 dois últimos algarismos referentes ao ano, por exemplo:
+		1998 retornará 98.
+	 Datas superiores a 2000 retornam três dígitos, por exemplo: 
+	 	2000 retornará 100, 2001 retornará 101 e assim sucessivamente.
+	- data.setDate(dia) - Define o dia do mês para dia do objeto data.
+	- data.setMonth(mês) - Define o mês para mês do objeto data.
+	- data.setYear(ano) - Define o ano para ano do objeto data.
+	- data.toGMTString() - Retorna uma string representando o objeto data
+	como GMT, isto é, com a data e hora de Londres.
+	
+Métodos para a manipulação da hora 
+		 * Do mesmo modo que existem métodos para obtenção e tratamento de datas, há também métodos para obtenção e tratamento de horas. seu funcionamento 
+		 * e utilização são semelhantes ao tratamento de datas. a seguir, são listados os métodos para a manipulação de horas, utilizando para uma melhor 
+		 * compreensão a seguinte declaração: data = new date ("october 23, 2001 10:42:15").
+			 * - data.gethours() - retorna a hora (0-23) do objeto data, no caso 10.
+			 * - data.getminutes() - retorna os minutos (0-59) do objeto data, no caso 42.
+			 * - data.getseconds() - retorna os segundos (0-59) do objeto data, no caso 15.
+		 	 * - data.gettime() - retorna o número de milissegundos decorridos desde 1º de janeiro de 1970, 00:00:00. esse método geralmente é usado 
+			 * 	 para realizar cálculos entre datas.
+			 * - data.gettimezoneoffset() - retorna a diferença em minutos da hora local em relação a gmt.
+			 * - date.parse(string) - Analisa a string e retorna o número de milissegundos decorridos desde 1º de janeiro de 1970, 00:00:00.
+			 * - data.setHours(horas) - Define a hora do objeto data.
+			 * - data.setMinutes(minutos) - Define os minutos do objeto data.
+			 * - data.setSeconds(segundos) - Define os segundos do objeto data.
+			 * - data.setTime(valor) - Define a hora para valor, que representa o número de milissegundos 
+			 	 decorridos desde 1º de janeiro de 1970, 00:00:00.
+			 * - data.toLocaleString() - Retorna uma string contendo a data e hora do objeto data, levando em 
+			 	 conta o fuso horário corrente.
+			
+			 

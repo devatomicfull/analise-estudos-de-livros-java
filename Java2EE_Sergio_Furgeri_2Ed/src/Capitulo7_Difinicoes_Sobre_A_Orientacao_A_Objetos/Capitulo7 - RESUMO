@@ -1,0 +1,716 @@
+Capitulo7 - RESUMO
+-Definições sobre a Orientação a Objetos
+-Objetivos deste capítulo
+-Fornecer definições básicas sobre a orientação a objetos;
+-Demonstrar as diferentes partes que compõem uma classe;
+-Definir a instanciação de objetos por meio de classes;
+-Demonstrar como é realizado o processo de troca de dados entre objetos;
+-Elucidar o compartilhamento de métodos entre diferentes classes;
+-Demonstrar as funções de construtores e destrutores;
+-Enumerar as vantagens da utilização das técnicas de encapsulamento,
+herança e polimorfismo;
+-Demonstrar como armazenar e recuperar um objeto em um arquivo.
+
+Introdução
+	A teoria sobre a orientação a objetos (OO) é extremamente importante, uma vez que toda a linguagem Java se baseia nesse princípio. Esses conceitos
+	são meio abstratos e se não forem bem tratados, podem gerar muitas dúvidas.Por esse motivo serão apresentados alguns exemplos práticos de utilização para
+	que o leitor tenha uma melhor compreensão sobre os pontos abordados.No cotidiano vivemos cercados por objetos de diversos tipos e formas. O
+	contato com esses objetos nos leva a identificar suas características físicas, sua forma, etc. Ao visualizarmos um objeto qualquer, como um veículo, por exemplo, reconhecemos sua forma, seu modelo, sua cor, enfim suas diversas características.
+	Outros veículos possuirão diferentes características, o que nos leva a entender que mesmo objetos de mesmo tipo possuem características diferentes. Associado com
+	as características do objeto, existe outro fator: os procedimentos que podem ser realizados ou analisados com ele. Voltando ao exemplo do veículo, ele pode estar
+	parado ou em movimento, existe um procedimento para aumentar (acelerar) e um para diminuir (frear) sua velocidade. A programação orientada a objetos tenta si-
+	mular esses aspectos, trazendo para o computador a realidade do dia-a-dia.
+
+7.2. Definições Envolvendo Classes
+	Neste ponto o leitor já deve estar familiarizado com uso de classes, uma vez que os programas em Java na realidade são formados por classes. A diferen-
+	ça entre um programa e uma classe é o método main, ou seja, uma classe que possui esse método é uma aplicação (ou programa) que pode utilizar outras
+	classes externas. Como já apresentado, para definir uma classe, é usada a palavra reservada class seguida pelo nome da classe, mais o par de chaves, como
+	a declaração seguinte:
+	
+	Qualificador class produto{
+		// atributos da classe
+		// métodos da classe
+	}
+	
+	O qualificador da classe indica como a classe pode ser usada por outras classes. Existem dois tipos de qualificador: public e package. public - indica que
+	o conteúdo público da classe pode ser usado livremente por outras classes do mesmo pacote ou de outro pacote. Na prática, um pacote é um diretório, sendo
+	assim, quando usado public, uma classe pode ser usada por classes armazenadas em outros diretórios. package indica que o conteúdo público da classe
+	pode ser usado apenas por classes do mesmo pacote, isto é, por classes localizadas no mesmo diretório.
+	Um único arquivo Java pode conter diversas classes, mas apenas uma delas pode ser definida como pública. Ao ser criada uma classe, o arquivo Java
+	deve possuir o mesmo nome da classe pública, observando o uso da caixa (maiúsculas/minúsculas) tanto para o nome da classe como para o nome do arquivo.
+	Além disso, é recomendado que todo nome de classe inicie com uma letra maiúscula, uma forma de diferenciar da declaração de variáveis. Seguindo essas
+	regras, ao criar uma classe pública com o nome Veiculo, o nome do arquivo deve ser Veiculo.java.
+	As classes são modelos a partir dos quais podem ser criados objetos. Imagine uma classe como sendo um projeto de um veículo criado por uma empresa
+	montadora. Depois de definidos todos os aspectos importantes do projeto do veículo (partes que o compõem, lista de peças, características, etc.), podem ser
+	criados muitos veículos, sempre tendo como, base o projeto original. Apesar de todos os veículos serem criados a partir de um modelo, cada veículo pode pos-
+	suir características individuais, como, por exemplo, a cor da lataria. Na orientação a objetos também é assim, pois uma vez definidas todas as partes que com-
+	põem uma classe, será possível a criação de objetos que herdarão suas características.
+
+7.2.1. Definição de Pacotes
+	Um pacote (package) em Java é um diretório em que está armazenada uma ou mais classes, isto é, um conjunto de classes. Geralmente as classes de mesma
+	afinidade, ou mesmo propósito, são armazenadas num mesmo local. Do ponto de vista da programação, os packages representam as bibliotecas (libraries) presentes
+	em outras linguagens de programação. Para utilizar classes de um pacote, é usada a diretiva import, conforme demonstrado anteriormente, do modo seguinte:
+	
+	import nome-do-pacote.nome-da-classe.
+	
+	Alguns exemplos podem ser:
+		import java.util.Date; → indica que será usada a classe Date do pacote java.util, isto é, a classe Data está localizada na pasta java\util.
+		import java.io.*; indica que será usada qualquer classe do pacote java.io, um dos pacotes padronizados que acompanham o SDK.
+		import java.awt.*; → indica que será usada qualquer classe do pacote java.awt, também um dos pacotes padronizados que acompanham o SDK.
+	Em todos os exemplos citados, os pacotes devem estar armazenados diretamente em um dos diretórios de classes do Java (contida na variável de
+	ambiente classpath, cujo valor default é \j2sdk_path\lib\classes.zip).
+	
+7.2.2. Partes que Compõem uma Classe
+	Uma classe é composta basicamente (apesar de existirem outros aspectos)por dois itens: variáveis de instância e a implementação de métodos.
+		As variáveis de instância ou atributos, como também são chamados, pela própria definição, são pertencentes à própria classe, destinadas a armazenar
+	alguma informação e que serão instanciadas, isto é, usadas pelos objetos quando eles forem criados. A seguinte declaração de variáveis de instância pode ser
+	usada em uma classe:
+	
+	public class Produto{
+		int codigo;
+		String nome;
+		int quantidade;
+		double preco;
+		//definicao de metodos
+	}
+	
+	Este exemplo mostra uma classe (Produto) que contém a declaração de quatro variáveis de instância (codigo, nome, quantidade e preco)
+	que serão instanciadas pelos objetos. A diferença básica entre uma variável de instância e uma variável comum é o fato de que as variáveis
+	de instância são declaradas fora de um método, isto é, logo no topo da declaração do nome da classe. São como variáveis globais, "visíveis" 
+	a todos os métodos, e podem ser usadas em qualquer parte de um programa.
+
+7.2.3. Instanciação de uma Classe
+	A criação de um objeto a partir de uma classe é chamada de processo de instanciação. A instanciação na realidade corresponde à alocação da memória
+	para armazenar informações de um objeto, semelhante ao que ocorre na declaração de uma variável qualquer, isto é, são reservados endereços de memória
+	para armazenar os dados correspondentes. Para realizar a instanciação de um objeto qualquer, é usado o operador new.
+	Enquanto a classe representa um modelo abstrato que serve apenas como base, os objetos representam modelos concretos. Para deixar mais claros os
+	conceitos definidos até aqui, será mostrado um pequeno exemplo de utilização de classes e objetos. Para tal, a classe Produto deve estar armazenada na mesma
+	pasta do exemplo seguinte Usa Produto. Será criada uma outra classe que utiliza a classe Produtos.
+
+	
+
+public class UsarProduto {
+
+	public static void main(String[] args) {
+		//
+		Produto A,B,C;
+		A = new Produto();
+		B = new Produto();
+		C = new Produto();
+		
+		System.out.println(A.codigo+" "+A.nome+" ");
+		System.out.println(A.quantidade+" "+A.preco);
+		A.codigo = 10;
+		A.nome = "Sabonete";
+		A.quantidade = 5;
+		A.preco = 0.54;
+		System.out.println(A.codigo+" "+A.nome+" ");
+		System.out.println(A.quantidade+" "+A.preco);
+		
+		System.out.println(B.codigo+" "+B.nome+" ");
+		System.out.println(B.quantidade+" "+B.preco);
+		B.codigo = 11;
+		B.nome = "Detergente";
+		B.quantidade = 35;
+		B.preco = 1.25;
+		System.out.println(B.codigo+" "+B.nome+" ");
+		System.out.println(B.quantidade+" "+B.preco);
+		
+		System.out.println(C.codigo+" "+C.nome+" ");
+		System.out.println(C.quantidade+" "+C.preco);
+		C.codigo = 11;
+		C.nome = "Detergente";
+		C.quantidade = 35;
+		C.preco = 1.25;
+		System.out.println(C.codigo+" "+C.nome+" ");
+		System.out.println(C.quantidade+" "+C.preco);
+	}
+}
+
+Os aspectos mais importantes da classe Usaproduto são:
+- A linha 5 contém a declaração dos objetos (A,B,C) que serão criados a partir da classe Produto. A declaração de objetos é idêntica à declara-
+ção de variáveis, isto é, colocam-se o identificador com o nome da classe e em seguida o(s) objeto(s) a ser(em) declarado(s). Essa declara-
+ção diz ao compilador que serão criados os três objetos por meio da classe Produto e esses objetos herdarão todas as características da clas-
+se Produto. Com isso, cada objeto possuirá as quatro variáveis declaradas na classe Produto e poderá manipular seus valores internamente,
+isto é, cada objeto poderá possuir diferentes valores para essas variáveis de instância. Dessa forma o objeto A poderá armazenar o conteú-
+do "Sabonete" na variável nome, enquanto B poderá armazenar "Detergente" e C "Shampoo". Uma vez definida uma classe; podem ser
+criados infinitos objetos a partir dela e cada um terá suas características.
+- As linhas 6 a 8 contêm a instanciação dos objetos em sua forma mais simples. Ao instanciar um objeto, são atribuídos valores iniciais às va-
+riáveis de instância. A inicialização das variáveis de instância segue o que foi definido na classe. Como na classe Produto existe apenas a de-
+claração dessas variáveis, sem a atribuição de nenhum valor, elas serão inicializadas da forma default da linguagem Java: valores numéri-
+cos são inicializados com zero e objetos String com null (sem valor).
+- As linhas 9 e 10 imprimem na tela os valores default com os quais os objetos foram criados. Apesar de serem impressos apenas os valores do
+objeto A, os objetos B e C também foram criados da mesma forma e possuem inicialmente os mesmos conteúdos.
+- As linhas 11 a 14 atribuem valores às variáveis do objeto A c as linhas 15 e 16 imprimem esses novos valores na tela. O mesmo ocorre com o
+restante do programa com relação aos objetos B e C.
+
+7.2.4. Compartilhamento de Variáveis entre os Objetos
+	Conforme demonstrado anteriormente, cada objeto criado trata as variáveis de instância de forma exclusiva, isto é, cada objeto possui uma variável
+	atrelada a si próprio. Entretanto, em muitos casos torna-se necessário compartilhar uma variável entre todos os objetos. Essa característica faz com que o
+	conteúdo da variável seja controlado pela própria classe e não pelos objetos individualmente. Para que essa funcionalidade seja possível, basta declarar a
+	variável como sendo do tipo static, ou seja, o conteúdo da variável será estático, controlado apenas pela classe. Observe como ficaria a classe Produto usando a
+	variável código como sendo do tipo estática:
+
+public class Produto{
+	static int codigo;
+	String nome;
+	int quantidade;
+	double preco;
+	//definicao de metodos
+}
+
+	Para confirmar essa teoria do compartilhamento de uma variavel entre os objetos, observe o exemplo UsaProduto2.
+	
+public class UsarProduto2 {
+
+	public static void main(String[] args) {
+		// 
+		Produto A,B,C;
+		A = new Produto();
+		B = new Produto();
+		C = new Produto();
+		
+		A.codigo = 1;
+		System.out.println("Valor de codigo em A: "+A.codigo);
+		System.out.println("Valor de codigo em B: "+B.codigo);
+		B.codigo = 2;
+		System.out.println("Valor de codigo em A: "+A.codigo);
+		System.out.println("Valor de codigo em B: "+B.codigo);
+		System.out.println("Valor de codigo em C: "+C.codigo);		
+	}
+}
+	
+Os aspectos mais importantes da classe Usaproduto2 são:
+	-A linha 9 atribui o valor 1 à variável codigo do objeto A. Como a variável é estática, todos os objetos vão "enxergar" esse mesmo valor. As
+	linhas 10 e 11 mostrarão na tela os valores da variável codigo para os objetos A e B, em que ambos serão iguais.
+	Na linha 12, a variável codigo recebe o valor 2 com a utilização do objeto B. Repare nas linhas 13 a 15 que todos os objetos (A,B,C) pos-
+	suem o mesmo valor para essa variável.
+	
+	A figura 7.1 ilustra a execução do exemplo Usaproduto2.
+		Valor de codigo em A : 1
+		Valor de codigo em B : 1
+		Valor de codigo em A : 2
+		Valor de codigo em B : 2
+		Valor de codigo em C : 2
+	
+
+7.2.5. Declaração de Métodos de uma Classe
+		Enquanto os atributos armazenam os dados associados aos objetos, os métodos podem realizar operações com os atributos ou ainda realizar certas
+	ações com os objetos. Por meio dos métodos é possível imitar o comportamento de um objeto no mundo real. Por exemplo, uma classe chamada Veiculo pode
+	possuir um método para realizar o processo de aceleração, aumentando o valor de um atributo velocidade, ou seja, ao invocar o método acelerar, simula-se que
+	uma pessoa está pisando no acelerador do Veículo. Por meio dos métodos, os objetos podem trocar mensagens entre si. Observe no exemplo citado que uma
+	pessoa (um objeto) pisa no acelerador do Veículo (o outro objeto). Essas definições vão se tornar mais claras à medida que os exemplos práticos forem apre-
+	sentados.
+		Da mesma forma que as variáveis de instância, os métodos são herdados pelos objetos. Como o leitor já possui conhecir entos sobre os métodos, esse
+	aspecto não representará maiores dificuldades.
+		Em resumo, até agora o leitor percebeu que a partir da declaração de uma classe podem ser criados inúmeros objetos que herdam as características de
+	classe. A classe Produto exemplificada não é uma classe executável, mas apenas um modelo a partir do qual podem ser criados outros objetos. Esta é a base de
+	funcionamento de toda a linguagem Java.
+	
+	O exemplo seguinte apresenta a classe Produto dotada de dois metodos:
+	mostraPreco() cuja funcao é mostrar na tela o valor atual do produto e atualizaPreco() cuja funcao é atualizar o valor do preco de um 
+	produto de acordo com o valor de porcentagem passado como argumento.
+	
+public class Produto {
+	int codigo;
+	String nome;
+	int quantidade;
+	double preco;
+	
+	public void mostraPreco() {
+		System.out.println(preco);
+	}
+	
+	public void atualizaPreco(double porc) {
+		preco = preco + preco * porc / 100;
+	}
+}
+
+Para implementar o uso da classe Produto, agora com dois metodos, será utilizada a classe UsaProduto3, conforme as declarações:
+
+public class UsarProduto3 {
+
+	public static void main(String[] args) {
+		Produto A,B,C;
+		A = new Produto();
+		B = new Produto();
+		
+		A.codigo = 10;
+		A.nome = "sabonete";
+		A.quantidade = 5;
+		A.preco = 0.54;
+		System.out.print(A.codigo+" "+A.nome+" ");
+		System.out.println(A.quantidade+" "+A.preco+" ");
+		A.mostraPreco();
+		A.atualizaPreco(12);
+		A.mostraPreco();
+		
+		B.preco = 5.45;
+		B.mostraPreco();
+		B.atualizaPreco(25);
+		B.mostraPreco();
+	}
+
+}
+	Os apectos mais importantes da classe UsaProduto3:
+		
+		Da mesma forma que os atributos, ao declarar um objeto, os metodos da classe sao herdados e podem ser utilizados por ele.
+		A.mostraPreco(); -->  é responsavel por mostrar o preco atual do produto A.
+		A.atualizaPreco(12); --> se encarrega de ajustar o valor do produto A, no caso em 12 por cento.
+		
+7.2.6. Encapsulamento
+		Conforme demonstrado até aqui, as variáveis e métodos declarados na classe são visíveis a todos os objetos criados. Apesar de ser uma característica
+	desejável na maioria das vezes, algumas aplicações necessitam ocultar certos métodos ou variáveis. Sendo assim, o termo encapsulamento, também conheci-
+	do por acessibilidade, pois define o que está acessível na classe, é a forma como os elementos da classe podem ser vistos e utilizados por outras classes.
+		Para determinar o nível de acesso dos elementos de uma classe, são usados os qualificadores de acesso public (um velho conhecido), private (privado),
+	package (pacote) e protected (protegido). Restringir o acesso a determinadas partes de uma classe significa controlar seu uso, o que pode ser uma necessida-
+	de em algumas situações. Por meio das restrições de acesso é possível assegurar que certas variáveis de instância tenham valores restritos que só podem ser acessados da própria classe e não por intermédio de classes externas, mantendo uma
+	certa segurança com relação à integridade do valor armazenado.
+		O uso do encapsulamento representa uma série de vantagens, uma vez que pode ocultar certos detalhes de implementação, reduzindo o tamanho do
+	código dos programas, tornando o código mais legível e minimizando os erros de programação.
+		O exemplo seguinte demonstra o uso do encapsulamento em uma classe chamada Veiculo. Ele traz uma novidade: a declaração de duas classes em um
+	mesmo arquivo Java. Observe que são duas classes distintas, separadas pelo abre e fecha-chaves. O exemplo também pode ser repartido em dois arquivos
+	distintos, cada um com uma classe separada, como feito até este ponto do livro.
+
+package Capitulo7_Difinicoes_Sobre_A_Orientacao_A_Objetos;
+
+public class Exemplo07_04 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Veiculo v1;
+		v1 = new Veiculo();
+		v1.nome = "Gol";
+		System.out.println(v1.nome);
+		v1.mostraVelocidade();
+		for(int i=1; i<=5;i++)
+			v1.acelera();
+			v1.mostraVelocidade();
+		//System.out.println(v1.valocidade);
+	}
+}
+
+class Veiculo{
+	String nome;
+	private float velocidade;
+	
+	public void acelera() {
+		if(velocidade<=10)
+			velocidade++;
+	}
+	
+	void frea() {
+		if(velocidade>0) {
+			velocidade--;
+		}
+	}
+	
+	void mostraVelocidade(){
+		System.out.println(velocidade);
+	}
+}
+
+Os aspectos mais importantes do Exemplo0701 são:
+	- A linha 5 contém a declaração de v1 como sendo um objeto da classe Veiculo, interna à própria classe, já que a aplicação possui as duas clas-
+	ses no mesmo arquivo. A linha 6 contém a inicialização do objeto v1.
+	- A linha 9 invoca o método mostraVelocidade que imprime na tela o valor atual da variável velocidade do objeto v1. O valor da variável
+	velocidade, não pode ser controlado pelo objeto, nem impresso, nem 	alterado. Para manipular o valor da variável velocidade é necessário o
+	uso dos métodos acelera e frea, declarados na classe Veiculo. Observe que o simples fato de inserir a linha 13 gera um erro de compilação
+	(velocidade has private access in Veiculo) devido ao fato de a variável velocidade ter sido declarada com privada (linha 20) na classe Veicu-
+	lo. Uma vez que uma variável é declarada como private, apenas a própria classe pode manipular seu conteúdo.
+	- As linhas 10 e 11 aceleram a velocidade do Veículo cinco vezes, incrementando o valor da variável velocidade e simulando que o veí-
+	culo está sendo acelerado.
+	- Linhas 21 a 25: contêm o método acelera responsável por realizar o incremento da variável velocidade que simula a velocidade atual do
+	veículo. Observe que de acordo com as instruções do método, a variável velocidade nunca pode assumir um valor superior a 10. Essa ca-
+	racterística representa um uso prático do encapsulamento: o controle da integridade do conteúdo de uma variável, uma vez que ela não
+	pode assumir valores absurdos, pois o objeto não tem permissão para alterar seu valor.
+	- Linhas 26 a 30: contêm o método frea, semelhante ao método acelera, entretanto realiza o processo inverso, desacelerando o veículo. Obser-
+	ve que a velocidade não pode assumir valores negativos.
+	- Linhas 31 a 34: contém o método mostraVelocidade responsável em imprimir na tela o valor da variável velocidade.
+	
+	Da mesma forma que uma variável de instância, um método também pode ser declarado como private e ser exclusivo da classe que o definiu.
+
+
+Construtores
+	Ate o presente momento, em todas as instanciações(ou inicializações) de objetos foi usada a palavra reservada new  da seguinte forma:
+		Conforme comentado anteriormente, o operador new é o responsável pelo processo de instanciação do objeto, representando uma forma extremamente
+	simples de atribuir valores default a um objeto. A declaração anterior pode ser	lida como construa v1, como sendo um objeto da classe Veiculo. Seguindo essa
+	declaração, o objeto é inicializado com valores default, desde que não exista a	presença do método construtor, isto é, o método construtor, como o próprio
+	nome diz, é o responsável por construir um objeto com determinados valores.
+	Sendo assim, o método construtor é invocado (pelo operador new) toda vez que um objeto é criado (instanciado).
+		O método construtor é responsável por alocar espaço na memória para a manipulação do novo objeto que está sendo criado e pode conter as seguintes
+	atribuições: abrir arquivos, inicializar periféricos, inicializar variáveis de instân-
+	cia ou outros procedimentos, dependendo das necessidades do objeto criado. O método construtor pode conter também a chamada para outros métodos, possi-
+	bilitando a criação de objetos mais complexos.
+		Ele deve possuir, obrigatoriamente, sempre o mesmo nome (idêntico) da classe em que ele se localiza. Se um construtor não for declarado, é assumido
+	um construtor default da linguagem Java, em que as variáveis são inicializadas com os seguintes conteúdos:
+		Variáveis numéricas recebem zero, valores lógicos recebem false e objetos recebem null.
+		A seguir, é apresentado o código de dois arquivos: uma classe para controle de clientes (Cliente.java) que define um método construtor e uma outra
+	classe que utiliza essa classe Cliente (Usacliente.java).
+
+package Exemplo07_04_Construtores;
+
+public class Cliente {
+	int codigo;
+	String nome;
+	String cidade;
+	Cliente(){// metodo construtor, mesmo nome da classe
+		cidade = "Indaiatuba";//inicializa cidade com um valor padrao
+	}
+}
+------------------------------------------------------------------------------------
+package Exemplo07_04_Construtores;
+
+public class UsarCliente {
+
+	public static void main(String[] args) {
+		Cliente c1 = new Cliente();//invoca o metodo construtor
+		System.out.println(c1.codigo);
+		System.out.println(c1.nome);
+		System.out.println(c1.cidade);
+	}
+}
+
+------------------------------------------------------------------------------------
+
+	O metodo construtor funciona como um metodo qualquer da linguagem java, podendo receber argumentos  para que os objetos sejam
+	criados com quaisquer  valores, passados no momento  de sua instanciação .
+	Suponha a necessidade de criar dois objetos com a classe Cliente, com diferentes  conteudos para a variavel nome.
+	Observe os dois exemplos anteriores  modificados para se adaptarem a nova necessidade.
+
+package Exemplo07_06_Construtores;
+
+public class Cliente {
+	int codigo;
+	String nome;
+	String cidade;
+	Cliente(String n){// o metodo construtor recebe o nome do cliente
+		nome = n;
+		cidade = "Indaiatuba";		
+	}
+}
+-------------------------------------------------------------------------------------
+package Exemplo07_06_Construtores;
+
+public class UsaCliente {
+
+	public static void main(String[] args) {
+		Cliente c1 = new Cliente("Izabela");//envia o nome do cliente
+		Cliente c2 = new Cliente("Tatiana");//envia o nome do cliente
+		
+		System.out.println(c1.nome);
+		System.out.println(c2.nome);
+	}
+}
+
+--------------\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\---------------	
+DESTRUTORES
+	Ao contrario dos construtores, como o proprio  nome sugere, os destrutores (finalizers) sao responsaveis
+	por liberar os recursos usados pelos objetos durante a execução do programa. Enquanto  os construtores 
+	alocam  um espaço inicial na memória, os destrutores liberam esse espaço. A necessidade e a importância dos
+	destrutores são liberação de recursos do sistema, pois se isso não for realizado,
+	os recursos podem se esgotar durante a execução dos programas, especialmente
+	o espaço alocado em memória. O método destrutor praticamente "passa uma
+	borracha" nos endereços de memória alocados para o objeto em questão, libe-
+	rando espaço para que outros objetos, ou outros sistemas aplicativos quaisquer,
+	possam utilizá-lo.
+	Para tornar esse conceito mais fácil de entender, observe o trecho seguinte:
+____________________________________________________________________________________
+	Cliente c1;
+	c1 = new Cliente("Izabela");
+	c2 = new Cliente("Tatiana");
+____________________________________________________________________________________
+	Como o objeto c1 foi instanciado duas vezes, o espaço alocado na linha 2 fica perdido na memória. Apesar de essa característica ser um problema, ela não
+	representa uma ameaça, pois a linguagem Java possui um processo automático para limpeza de objetos não utilizados depois de um certo tempo. Isso é feito
+	por meio de um processo nomeado Coleta automática de lixo (automatic garbage collection). Cada vez que um objeto deixa de ser referenciado pelo progra-
+	ma, ficando perdido na memória, ele recebe uma marcação para eliminaçãofutura. Assim que o programa ficar ocioso, o gerenciador automático de memó-
+	ria destrói os objetos perdidos, liberando os recursos ao sistema. Com esse processo torna-se desnecessário liberar a memória explicitamente em um programa
+	em Java, uma vez que isso é feito automaticamente.
+	Existem ainda diversos detalhes a respeito da destruição de objetos cuja descrição foge aos objetivos definidos em nosso livro.
+
+HERANCA
+	Como o próprio nome sugere, na orientação a objetos o termo herança se refere a algo herdado. Em Java, a herança ocorre quando uma classe passa a
+herdar características (atributos e métodos) definidas em uma outra classe, especificada como sendo sua ancestral ou superclasse. A técnica da herança possi-
+bilita o compartilhamento ou reaproveitamento de recursos definidos anteriormente em uma outra classe. A classe fornecedora dos recursos recebe o nome
+de superclasse e a receptora dos recursos de subclasse.
+	Outro termo envolvido com herança é a especialização. Uma vez que uma classe herda características de uma outra, ela pode implementar partes
+específicas não contempladas na classe original (superclasse), tornando-se especializada em algum processo.
+	A técnica da herança é extremamente utilizada em Java. Praticamente todas as aplicações com janelas, Applets e Servlets se beneficiam desse recurso. A
+técnica da herança será utilizada a partir do capítulo 9 em nosso livro, no momento em que for tratada a criação de janelas (formulários).
+	Para melhor esclarecimento dos conceitos de herança e especialização, observe os exemplos seguintes. Considere a classe Veiculo com o seguinte conteúdo:
+____________________________________________________________________________________
+package Exemplo07_07_Heranca;
+
+public class Veiculo {
+	String nome;
+	float velocidade;
+	
+	public void acelera() {
+		if(velocidade<=10) {
+			velocidade++;
+		}
+	}
+	
+	public void frea() {
+		if(velocidade>0)
+			velocidade--;
+	}
+}
+____________________________________________________________________________________
+	A classe Veiculo possui duas variáveis de instância (nome, velocidade) e dois métodos (frea, acelera).
+	Suponha que exista a necessidade de uma outra classe possuir a mesma funcionalidade da classe Veiculo,
+	 porém com a necessidade também de possuir métodos para ligar e desligar o Veículo. Em vez de criar uma
+	nova classe contendo todas as características citadas, as funcionalidades da classe Veiculo (a Superclasse)
+ 	podem ser ampliadas por meio da palavra extends. Observe a classe Veiculo2 que estende a funcionalidade da
+  	classe Veiculo.
+_____________________________________________________________________________________
+
+package Exemplo07_07_Heranca;
+
+public class Veiculo2 extends Veiculo{
+	boolean ligado;
+	public void liga() {
+		ligado = true;
+	}
+	
+	public void desliga() {
+		ligado = false;
+	}
+}
+_____________________________________________________________________________________
+		A classe Veiculo2 estende (por meio da palavra extends) a funcionalidade da classe Veiculo, herdando 
+	todas as suas características e acrescentando novas funcionalidades: uma variável de instância (para
+	saber se o motor está ligado), um método para ligar o veículo e um para desligar o veículo. Suponha 
+	que uma outra utilize a classe Veiculo2, declarando um objeto da seguinte forma: Veiculo2 v1;
+		Ao instanciar o objeto v1, ele receberá todas as variáveis de instância e todos os métodos presentes
+	nas classes Veiculo e Veículo2, ou seja, o objeto v1 receberá as variáveis nome, velocidade, ligado 
+	e os métodos frea, acelera, liga e desliga.
+		É importante salientar que, ao alterar a classe Veiculo
+	(a Superclasse do exemplo), todas as mudanças serão refletidas na classe veiculo2 (a subclasse).
+	Por meio da herança torna-se possível a criação de uma hierarquia de classes.
+	Observe a figura 7.3.
+										HIERARQUIA DE CLASSES
+
+												 Veiculo
+									|------------	|	-----------|
+								Veiculo2		Veiculo3		Veiculo4	
+									|								|-----------|
+						|-----------|-----------|							Veiculo8
+					veiculo5  	Veiculo6	Veiculo7							|
+																			Veiculo9
+																			
+																			
+	A figura 7.3 ilustra uma hierarquia de classes em que todas as subclasses (Veiculo2 a Veiculo9) foram criadas
+a partir da superclasse Veiculo. Qualquer alteração realizada numa classe de nível superior irá refletir nas
+classes de níveis inferiores. O mecanismo da herança possibilita que novas classes sejam criadas e adicionadas
+à hierarquia sem qualquer necessidade de alteração no código das classes, pois cada uma define exatamente 
+suas características. São como engrenagens que se encaixam umas nas outras. As classes adicionadas a uma
+hierarquia podem especializar ou restringir o comportamento das classes superiores.
+	Conforme apresentado, a herança constitui-se uma importante técnica para a orientação a objetos 
+(e para Java), 	possibilitando que o código já criado em uma classe seja reaproveitado e especializado em outra.
+
+
+
+POLIMORFISMO
+		O leitor pôde verificar que por meio das técnicas de encapsulamento e herança, novas funcionalidades podem 
+	ser adicionadas às classes. Enquanto a herança é um poderoso mecanismo de especialização, o polimorfismo 
+	oferece um mecanismo para a generalização. Ao analisar a hierarquia de classes da figura 7.3 de forma 
+	inversa, isto é, da classe de nível inferior para a classe de nível superior, percebe-se a generalização 
+	das classes relacionadas, ou seja, cada classe da hierarquia pode assumir a mesma funcionalidade da 
+	superclasse, sendo tratadas como tal. Caso a superclasse modifique sua estrutura, igualmente todas as 
+	classes da hierarquia serão afetadas. Com isso nota-se que uma classe da hierarquia pode assumir diferentes
+	formas (funcionalidades), de acordo com as classes de nível superior.
+		Para compreender o polimorfismo, considere os exemplos seguintes:
+__________________________________________________________________________________________________________________
+
+package Exemplo07_08_Polimorfismo;
+
+public class Veiculo3 {
+	boolean turbo;
+	
+	public void ligaTurbo() {
+		turbo = true;
+	}
+	
+	public void desligaTurbo() {
+		turbo = false;
+	}
+}
+__________________________________________________________________________________________________________________
+
+	A classe Veiculo3, da mesma forma que a classe Veiculo2 do exemplo anterior, estende a funcionalidade da 
+classe Veiculo, adicionando uma variável (para controlar se o turbo do veículo está ligado) e dois métodos 
+(um para ligar e outro para desligar o turbo). Tanto a classe Veiculo2 como a classe Veiculo3 foram criadas
+a partir da classe Veiculo e poderão ser tratadas como classes genéricas desta (veja na figura 7.3 a 
+hierarquia dessas classes). Considere a necessidade de criar uma outra classe que imprima na tela a velocidade
+atual dos objetos das classes Veiculo2 e Veiculo3. Considere a classe seguinte como a responsável por realizar
+essa função.
+-----------------------------------------------------------------------------------------------------------------
+package Exemplo07_08_Polimorfismo;
+
+public class Generica {
+
+	public static void main(String[] args) {
+		//
+		Veiculo2 a = new Veiculo2();//cria um objeto da classe Veiculo2		
+		Veiculo3 b = new Veiculo3();//cria um objeto da classe Veiculo3
+		
+		a.velocidade = 10;
+		b.velocidade = 20;
+		
+		mostraVelocidade(a);
+		mostraVelocidade(b);
+	}
+	
+	
+	public static void mostraVelocidade(Veiculo veic) {
+		System.out.println(veic.velocidade);
+	}
+}
+_________________________________________________________________________________________________________________
+
+	A classe Generica cria dois objetos diferentes (linhas 5 e 6), os objetos a e b. Nas linhas 9 e 10 o método
+mostra Velocidade é invocado, enviando dois objetos diferentes (a e b). Dois objetos diferentes sendo passados 
+ao mesmo método?? 
+	Isso foi realizado com a sobrecarga de métodos, quando um mesmo método pode receber diferentes argumentos,
+	entretanto este não é o caso. Observe a linha 13: o método mostraVelocidade está recebendo como argumento
+	 um objeto do tipo Veiculo, isso mesmo, a superclasse.
+	
+	  Devido ao fato de Veiculo2 e Veiculo3 terem sido gerados a partir da classe Veiculo, elas são consideradas
+	  classes genéricas desta. Por esse motivo o método mostraVelocidade pode receber qualquer classe criada a
+	  partir da classe Veiculo.Sem utilizar o conceito do polimorfismo, seria necessária a declaração de dois 
+	  métodos mostraVelocidade, um para cada tipo de objeto recebido. Esse exemplo demonstra que um simples 
+	  trecho de código pode ser criado para que objetos diferentes sejam tratados da mesma forma por meio de
+	  seu ancestral comum.
+	  
+	Em função dos conceitos apresentados, conclui-se que o polimorfismo constitui-se outra técnica para o 
+	reaproveitamento e simplificação do código, possibilitando o desenvolvimento de aplicações mais robustas.
+	
+GRAVAÇÃO E LEITURA DE OBJETOS.
+		As "Atributos" variáveis de instância manipuladas pelos objetos de uma classe podem ser armazenadas
+	e recuperadas mediante sua gravação em arquivo. Apesar de que o método mais usual de armazenamento
+	de dados do mercado seja feitob com o uso de tabelas, usadas no modelo relacional de banco de dados,
+	existe a tendência da utilização de banco de dados orientado a objetos. A linguagem Java possibilita
+	construir arquivos que armazenam objetos por meio da utilização de classes especiais.
+
+	Os exemplos seguintes demonstrarão como isso é possivel. Considere uma classe usada para armazenar dados sobre
+	computadores, conforme o codigo Seguinte:
+	
+import java.io.*;
+class Computador implements Serializable{
+	String nome,velocidade,memoria,revedendor;
+}
+
+Os aspectos mais importantes da classe computadores são:
+	- Importa o pacote java.io necessario para a leitura e gravação em arquivos.
+	- Declara a classe Computador e implementa a interface  Serializable, necessaria
+	 para a leitura e gravação dos objetos no arquivo.
+	- A classe Computador contem 4 variaveis de instancia "atributos" que serão usadas
+	 para a leitura e gravação dos dados referentes ao computador.
+
+A classe seguinte utiliza a classe Computador e armazena os dados em um arquivo chamado 
+computador.arq.
+--------------------------------------------------------------------------------------
+package Exemplo07_09_Gravacao_E_Leitura_De_Objetos;
+import java.io.*;
+public class GravaObjeto {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Computador c1 = new Computador();
+		c1.nome = "Pentium 4";
+		c1.velocidade = "1,5 GigaHertz";
+		c1.memoria = "256 MegaBytes";
+		c1.revendedor = "Novo Pc";
+		
+		try {
+			FileOutputStream f = new FileOutputStream("computador.arq");
+			ObjectOutputStream s = new ObjectOutputStream(f);
+			s.writeObject(c1);
+			s.flush();
+			System.out.println("Gravacao realizada com sucesso! ");
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+	}
+}
+--------------------------------------------------------------------------------------
+
+Os aspectos mais importantes da classe GravaObjeto são:
+	- 	Computador c1 = new Computador();
+		c1.nome = "Pentium 4";
+		c1.velocidade = "1,5 GigaHertz";
+		c1.memoria = "256 MegaBytes";
+		c1.revendedor = "Novo Pc";
+		
+		DECLARAM e RECEBEM dados de um objeto(c1) para posterior armazenamento em arquivo. Observe
+		que serao gravados no arquivo computador.arq os conteudos armazenados nas variaveis:
+		nome, memoria, velocidade e revendedor.
+		
+	-	FileOutputStream f = new FileOutputStream("computador.arq");
+			ObjectOutputStream s = new ObjectOutputStream(f);
+			s.writeObject(c1);
+			s.flush();
+			
+			SE ENCARREGAM de gravar o objeto em um arquivo chamado computador.arq que será criado
+			na mesma pasta em que se encontra a classe GravaObjeto.
+			Não entraremos em detalhes deste trecho.
+			LOGO, Procure apenas entender que toda vez que um objeto for gravado, essa sequencia de linhas
+			devera estar inserida no programa.
+			
+	-	}catch(Exception e) {
+			System.out.println(e);
+		}
+		
+		Se encarregam de imprimir uma mensagem na tela, caso algum erro ocorra durante o processo de gravacao
+		do arquivo.
+		
+	A classe seguinte realiza o processo inverso da classe GravaObjeto, isto é, realiza a leitura de um objeto
+	armazenado no arquivo computador.arq.
+------------------------------------------------------------------------------------------------
+package Exemplo07_09_Gravacao_E_Leitura_De_Objetos;
+import java.io.*;
+public class LerObjeto {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		try {
+			FileInputStream f = new FileInputStream("computador.arq");
+			ObjectInputStream s = new ObjectInputStream(f); 
+			Computador x = (Computador)s.readObject();
+			System.out.println(x.nome);
+			System.out.println(x.velocidade);
+			System.out.println(x.memoria);
+			System.out.println(x.revendedor);
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+	}
+
+}
+------------------------------------------------------------------------------------------------
+
+Os aspectos mais importantes da classe LerObjeto são:
+	-	FileInputStream f = new FileInputStream("computador.arq");
+		ObjectInputStream s = new ObjectInputStream(f); 
+		Computador x = (Computador)s.readObject();
+		
+		Transferem o objeto armazenado no arquivo computador.arq para o objeto x.
+	
+	-	System.out.println(x.nome);
+		System.out.println(x.velocidade);
+		System.out.println(x.memoria);
+		System.out.println(x.revendedor);
+		
+		Imprime na tela o conteudo das  variaveis armazenadas no arquivo computador.arq
+		
+	RESULTADO:
+		
+			Pentium 4
+			1,5 GigaHertz
+			256 MegaBytes
+			Novo Pc
+			
+COM AS SIMPLES DEFINIÇÕES APRESENTADAS NESTE CAPITULO ESPERA-SE QUE O LEITOR TENHA ADQUIRIDO UM CONHECIMENTO 
+BASICO SOBRE A ORIENTAÇÃO A OBJETOS, POREM ESTE ESTUDO DESTE CAPITULO NAO FOI ESGOTADO CABE A VOCE COMO DESENVOLVEDOR
+BUSCAR MAIS!

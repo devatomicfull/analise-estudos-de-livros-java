@@ -1,0 +1,76 @@
+Capitulo5 - RESUMO: Criacao de Metodos
+-Indentificar Principais Metodos
+-Compreender vantagens do uso dos metodos
+-Fornecer subsidios para que o leitor possa criar seus proprios Metodos
+-Descrever os mecanismos necessarios para a troca de dados entre os metodos
+
+Metodos: São trechos de programa que recebem um determinado nome e podem ser chamados varias vezes durante a execução
+de um programa, ou seja, é uma sub-rotina que pode ser invocada toda vez que usa funcionalidade for necessaria em 
+um trecho da classe ou ainda a partir de uma outra classe.
+
+METODOS QUE NÃO RETORNAM ARGUMENTOS
+	Os metodos que nao retornam valores sao semelhantes as procedures encontradas na maioria das linguagens de 
+	programação. No geral, metodos reduzem o tamanho do codigo e possibilitam a criação de uma outra linguagem
+	a partir da linguagem original. Suponha o metodo println() da classe System, utilizado dezena de vezes.É 
+	possivel para um desenvolvedor, criar um metodo chamado imprima() que faça exatamente o mesmo que println.
+
+Os metodos que não retornam argumentos possuem a sintaxe seguinte em sua declaração:
+	
+	qualificadores tipo-do-retorno nome-do-metodo()
+	
+	qualificadores: Podem ser de diversos tipos, Neste livro sempre serão usados os qualificadores public static que 
+	atendem à grande maioria das aplicaçõe.
+	
+	tipo-do-retorno: Refere-se ao tipo de dado retornado pelo método. Metodos que nao retornam valores devem possuir
+	nesse parametro a palavra VOID.
+	Sempre que void for usada em uma declaração de metodo, nenhum valor sera retornado apos sua execução.
+	
+	nome-do-metodo(): Não pode existir espaços em branco entre as palavras. Default--> O nome de um metodo sempre inicia
+	com uma palavra toda minuscula.
+	
+	exemplo; imprime,imprimeLinha,imprimeFraseLinha
+
+	public static void imprime()
+	public static void imprimeLinha()
+	public static void imprimeFraseLinha()
+	
+	exemplo simples;
+	//INVOCAÇÃO DO METODO EXTERNO (imprime)
+		public static void imprime(){ //DECLARACAO DO METODO
+			System.out.print("Seja Bem vindo");
+		}
+	
+	{} --> ABERTURA E FECHAMENTO DE ESCOPO
+
+	OBSERVAÇÃO: É muito comum em java um metodo chamar o outro metodo.Quando isso ocorre, a execução do metodo é
+	suspensa e inicia-se a execução do metodo externo. 
+	
+1-Metodo main(): é invocado
+2-Invocação"Execução" do metodo imprime(): Ou seja , a execução do metodo main() sera suspensa e o programa"Pula" 
+para onde esta inscrito o metodo-| public static void imprime(){System.out.print("Seja Bem vindo");} |
+3-O metodo imprime(): Exibe a mensagem na tela por meio da instrução-->  	System.out.print("Seja Bem vindo");
+4-Chega no final } do escopo do metodo imprime(): O programa percebe que a execução do metodo se encerrou.
+|-> Dessa forma o programa volta a ser excutado após a linha que chamou o metodo imprime(), logo na linha seguinte
+a execução do metodo main sera reiniciada.
+5-Chega no final } do escopo do metodo main(): O programa é encerrado!
+
+ESSA SEQUENCIA DE EXECUÇÃO É SEMPRE VALIDA PARA OS METODOS, ISTO É, CADA METODO INVOCADO É CHAMADO E EXECUTADO ATÉ O
+FINAL, A NÃO SER QUE EXISTA UM CHAMADO A OUTRO METODO; DESSA FORMA NOTA-SE QUE OS METODOS SÃO EXECUTADOS EM CASCATA
+DO MESMO MODO QUE OCORREM COM OS LAÇOS DE REPETIÇÃO.
+
+void --> Significa que não existe um valor de retorno.
+public --> possibilita que ele seja utilizado externamente à classe em que esta sendo construido.
+
+DICA: Uso de metodos que nao recebem e nem retornam valores nao tem muita utilidade.
+		ex: Metodo que limpa tela
+		
+			public static void limpaTela(){
+				for(int i=1;i<=25;i++)
+					System.out.println();
+			}  
+			
+Um tipo de metodo de maior utilidade é aquele que  recebe um argumento e faz algum processamento com ele. São 
+métodos que recebem um argumento dentro dos parenteses.
+	SINTAXE:
+			qualificadores tipo-do-retorno nome-do-metodo(tipo variavel)
+			

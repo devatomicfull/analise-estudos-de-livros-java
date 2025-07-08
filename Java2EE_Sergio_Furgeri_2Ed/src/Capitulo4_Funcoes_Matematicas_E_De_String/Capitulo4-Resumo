@@ -1,0 +1,29 @@
+- Demonstrar as principais funções matemáticas em java e seu uso pratico;
+- Demonstrar as principais funções para manipulação de strings em java e seu uso pratico;
+- Fornecer conhecimento ao leitor para que posssa desenvolver aplicativos que simulem problemas do cotidiano;
+- Mostrar as técnicas de localização de caracteres em strings.
+
+FUNÇÕES MATEMÁTICAS: Permite efetuar diversos cálculos matematicos. Para realizar esses calculos, são utilizados
+ os métodos da classe Math que devem apresentar a seguinte SINTAXE:
+ 
+ 	Math.<nome da função>(argumentos ou lista de argumentos>)
+ 	
+ A Classe Math faz parte do pacote java.lang, logo não é necessario o uso do import (importa a classe)
+ 
+A classe Math define duas constantes matematicas:
+	# Math.PI-O valor de pi (π = 3.14159265358979323846)
+	# Math.E-Que se refere ao valor da base para logaritmos naturais(2.7182818284590452354)
+
+
+Funcao_De_String
+	Uma String corresponde à união de um conjunto de caracteres.
+	Em java, as Strings são instancias da classe String.
+	Essas Strings podem ser manipuladas de varias formas.
+	Por exemplo, é possivel verificar seu comprimento, retirar um pedaço dela, acessar ou mudar caracteres individuais. 
+	As Strings constituem-se uma cadeia de caracteres entre aspas.
+		EXEMPLO: S = "Linguagem java"
+	
+	Existe diversos Métodos "Função" para manipulação de Strings.
+	 	SINTAXE: 
+	 			<nome da string>.<função>(<argumento/s>)
+	 			

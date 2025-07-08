@@ -1,0 +1,30 @@
+Capitulo 1:
+- Orientação a Objetos
+- Portabilidade
+- Multithreading 
+- Suporte à comunicação
+- Acesso remoto a banco de dados
+
+Compilador - JDK
+	É realizada a tradução do programa escrito em java para uma linguagem intermediária
+	chamada de bytecodes - código independente que é interpretado pelo interpretador java "JRE"
+3 tipos de programas em Java: Aplicações Convencionais, Applets e Servelts!
+
+IDE-> Jbuilder, VisualCafé, VisualJ++ e VisualAge for JAVA.
+
+compilador javac | interpretador java
+
+PATH - Responsável por definir o caminho que o sistema operacional utilizará para procurar
+as aplicações executáveis "Permitirá que o compilador da linguagem java seja executado
+- independente do diretório que o usuário esteja utilizando." 
+
+CLASSPATH - possui uma função semelhante, (é usada para determinar em quais diretórios
+essas classes a serem usadas serão procuradas).
+
+JAVA_HOME - Pasta Principal onde contém todas as outras estão contidas.
+ 
+Exemplo:
+SET PATH=c:\j2sdk1.4.0\bin;%PATH%;
+SET CLASSPATH=c:\j2sdk1.4.0\LIB;.;
+SET JAVA_HOME=c:\j2sdk1.4.0
+

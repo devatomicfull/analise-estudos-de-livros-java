@@ -1,0 +1,54 @@
+Capitulo-2
+Uma variavel é uma localizacao da memoria(um endereco ou varios deles), capaz de armazenar um valor  pertecente a 
+um certo tipo de dado, para o qual se dá um nome( o nome da variavel) que usualmente descreve seu significado ou
+proposito.
+
+nomeVariavel - Tipo -> "Obrigatoriamente devem ser declarada o tipo antes de serem utilizadas no programa"
+
+Valor padrão atribuido pela linguagem Java
+char,byte,short,int,long,float e double -> valor: 0
+boolean -> valor: false
+
+OBS: Dentro do escopo da Classe o valor padrão é zero e false no caso do tipo boolean, deve inicializar com algum
+valor caso tenha criado dentro do escopo do método
+
+COMENTÁRIOS - 3 tipos de comentários
+// --> comentário de linha única
+/**/ --> comentário que envolve várias linhas
+/** */ --> Possibilitar a documentação do programa por meio de um utilitário (javadoc) 
+
+O comentário de documentação normalmente é posicionado imediatamente antes do elemento a ser documentado e seu 
+conteúdo é extraído automaticamente  pelo javadoc - essa ferramenta gera uma página HTML.
+
+OPERADORES ARITMÉTICOS
+	adição: +
+	subtração: -
+	multiplicação: *
+	divisão: /
+	resto da divisão inteira: %
+	sinal negativo: -nomeDaVariavel |--> exemplo "numero"+(-10);
+	sinal positivo: +nomeDaVariavel |--> "Concatenação"
+
+OPERADORES DE INCREMENTO E DECREMENTO
+	Incremento unitário inicial: ++x
+	Incremento unitário Final: x++
+
+	Decremento unitário inicial: --x
+	Decremento unitário Final: x--
+
+OPERADORES RELACIONAIS: Possibilita comparar valores ou expressões, retornando um resultado LÓGICO true ou false
+	igual: ==
+	diferente: !=
+	maior que: >
+	maior ou igual a: >=
+	menor que: <
+	menor ou igual a: <=
+
+OBSERVAÇÃO: A utilização do sinal de igualdade (==) para a comparação de variáveis ou expressões
+
+OPERADORES LÓGICOS
+	E lógico ou AND: &&
+	OU lógico ou OR: ||
+	NEGAÇÃO ou NOT: !
+
+

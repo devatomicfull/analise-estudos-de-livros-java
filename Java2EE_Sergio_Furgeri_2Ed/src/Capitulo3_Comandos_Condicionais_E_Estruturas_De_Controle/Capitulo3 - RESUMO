@@ -1,0 +1,177 @@
+Capitulo3 - RESUMO
+Comando Condicionais: Possibilita que a execucao seja desviada de acordo com certas condicoes. if-else e swith-case.
+
+	if(condicao){
+		INSTRUÇÕES PARA CONDICAO VERDADEIRA true
+		INSTRUÇÕES PARA CONDICAO VERDADEIRA true
+	}else{
+		INSTRUÇÕES PARA CONDICAO FALSA false
+		INSTRUÇÕES PARA CONDICAO FALSA false
+	}
+
+OBSERVAÇÃO: CASO haja apenas uma instrução a ser EXECUTADA, tanto no if como no else, o uso de chaves se faz desnessario
+	if(condicao)
+		INSTRUÇÕES PARA CONDICAO VERDADEIRA true
+	else
+		INSTRUÇÕES PARA CONDICAO FALSA false
+
+Estrutura Switch-case: Se refere a uma estrutura de controle com múltipla escolha.
+	
+	switch(<expressão>){
+		case 1: instruções; break;
+		case 2: instruções; break;
+		case 3: instruções; break;
+		default: instruções;
+	} 
+
+OBSERVAÇÃO: Na primeira linha é avaliado o resultado da expressão, que normalmente se refere a uma variavel simples.
+	O resultado dessa expressão é comparado nas diretivas case, executando o bloco de instruções quando a expressão coincidir 
+	com o valor na frente do case.
+	
+	Supondo que <expressão> -> seja 2, sera executado instruções localizadas entre case 2: e break;
+	
+	A cada case, o programa compara o valor da expressão com o valor colocado na frente do case. Caso os valores
+	sejam iguais, todas as instruções são executadas até  que seja encontrada uma instrução break,que encerra o 
+	switch e faz a execução do programa desviar para o ponto após a chave de encerramento do switch. O programa 
+	percorre todas as diretivas case até que uma delas seja igual à expressão inserida no switch. Caso nenhuma 
+	diretiva case possua o valor correspondente da expressão, serão executadas as instruções localizadas na 
+	diretiva default que é OPCIONAL.
+	
+	EXCEÇÕES EM JAVA: Referem-se aos erros que podem ser gerados durante a execução de um programa. Esses erros 
+	devem ser controlados (TRATADOS) dentro do um programa, pois é muito comum que diversos tipos de exceções possam
+	ocorrer durante o processo de execução.
+	
+	Controle de ERROS por meio da ESTRUTURA try-catch-finally e da cláusula throws.
+	
+	USO DA ESTRUTURA try catch: O objetivo de sua utilização é a previsão de erros de execução. Essa estrutura tem
+	como função desviar a execução de um programa caso ocorram certos tipos de erro, predefinimos durante o processamento
+	das linhas, e evitar que o programador tenha que realizar testes de verificação e avaliação antes da realização
+	de certas operações. Quando um erro ocorre, ele gera uma exceção que pode ser tratada pelo programa.
+	
+	ESTRUTURA TRY-CATCH - SINTAXE:
+		try{
+			<conjunto de instruções>
+			
+		} catch{
+			<tratamento de erro 1>
+			
+		}catch(nome da exceção){
+			<tratamento de erro 2>
+			
+		}catch(nome da exceção){
+		
+			<tratamento de erro n>
+		}
+		
+	Toda vez que a estrutura try é utilizada, obrigatoriamente em seu encerramento(na chave final) deve existir 
+	pelo menos um catch, a não ser que ela utilize a instrução finally, conforme abordado em seguida. 
+	Pode ser interpretada como: Tente executar o conjunto de instruções entre as chaves; se houver algum erro, 
+	execute seu tratamento no catch. Depois de tratado o erro, a execução do programa continua a partir do final
+	do ultimo catch.
+	
+	(Os erros gerados pelo programa sempre estão relacionados com as classes que estão sendo usadas. POR EXEMPLO:
+	o método parseFloat da classe Float(Float.parseFloat) pode gerar erro de conversão numerica(NumberFormatException),
+	, isto é, esse tipo de erro pode ser tratado quando essa classe for usada no programa. Não faz sentido verificar
+	se ocorrerá um erro de entrada e saída de dados(IOException) quando a classe Float for utilizada. Portanto, o 
+	tratamento de erros deve ser realizado de forma coerente, de acordo com as classes utilizadas no programa.
+	
+	USO DO BLOCO Finally: Faz parte da estrutura try catch, sendo inserido geralmente após o ultimo catch. 
+	
+	O finally é opcional e fornece um conjunto de codigos que é sempre executado, independente de uma exceção ocorrer
+	ou não. Quando se utiliza a estrutura try sem nenhum bloco try sem nenhum bloco catch, O BLOCO FINALLY é OBRIGATORIO
+	,isto é, existe a possibilidade da utilização das estruturas try-catch, try-catch-finally ou ainda try-finally.
+	
+	O objetivo do finally é manter códigos para liberação de recursos, adquiridos em seu bloco try correspondente.
+	
+	Durante a execução de um programa, caso nenhuma exceção ocorra, os blocos catch não são executados e o controle
+	prosegue para o bloco FINALLY, que libera o recurso e passa a executar a primeira instrução após o bloco FINALLY.
+	
+	CASO ocorra alguma exceção, a execução do programa sera desviada para o grupo de instruções catch.
+	A seguir, independentemente de ter havido ou não uma exceção, o controle passa para o bloco finally para libera-
+	ção de recursos. Mesmo que não exista nenhuma instrução catch referente à exceção gerada, o controle passa pelo
+	bloco finally. Isso pode ser útil ao desenvolver caso necessite controlar apenas alguns tipos de erro, pois erros
+	diferentes podem ser desviados para o finally.
+	
+	try-catch-finally: SEQUENCIA DE EXECUÇÃO 
+																TRY
+			try--> erros |-sim-> catch --------|           		 |	
+						 |-nao-> finally <-não-|               ERROS    
+						 										 |	 
+				 									   NAO < -DECISAO-- > SIM	
+	 													|		 		   |
+	 													|		 		 CATCH			 
+														|		   		   |
+														| <----------------|
+														|
+														|-> FINALLY
+
+USO DA INSTRUÇÃO throw:
+	É utilizada para disparar um exceção, isto é, ela pode forçar que uma exceção ocorra. Com a instrução throw 
+	é possivel criar uma exceção propria, dando a ela um nome qualquer.
+	
+USO DO getMessage e printStackTrace:										   
+	Em determinadas aplicações torna-se necessario descobrir qual o tipo de erro ocorrido e em que linha do
+	programa ele ocorreu. Para reconhecer erros, são utilizados dois MÉTODOS: getMessage e printStackTrace(
+	a definição e a criação de métodos serão estudadas no Capitulo5)
+	O método getMessage Serve para consultar e retornar uma string armazenada em uma determinada exceção.
+	O método printStackTrace retorna o tipo de exceção gerado e em que linha do programa foi gerado o ERRO.
+		
+LAÇOS DE REPETIÇÃO:"LOOPING" Possibilita a repetição de blocos de instruções em um programa.
+					Possibilita a criação de CONTADORES, TEMPORIZADORES, ROTINAS PARA CLASSIFICAÇÃO, OBTENÇÃO E
+					RECUPERAÇÃO DE DADOS.
+USO DO LAÇO for:
+	Funciona como um tipo de contador infinito, isto é, ele realiza a contagem de um valor inicial conhecido até
+	um valor final também conhecido. O funcionamento é realizado por uma variavel de controle do tipo contador,
+	podendo ser crescente ou decrescente, tendo a seguinte SINTAXE:
+	
+	for(INICIALIZAÇÃO;CONDIÇÃO;INCREMENTO ou DECREMENTO)
+		Iniciaização:  é o valor inicial da variavel de controle do laço.
+		
+		Condição:  é a variavel que controla a continuação do laço. Esta condição deve conter o valor final que  
+		a variavel de controle  pode assumir dentro do laço.
+		
+		Incremento ou Decremento: é o passo com que a variavel de controle sera acrescida ou decrescida. Esse incremento
+		pode ser realizado por meio de uma variavel inteira ou com ponto fluatuante, permitindo pequenos incrementos
+		decimais caso seja necessario.
+		
+	Exemplo:
+	for(int x=0; x<10; x++){
+		<Conjunto de instruções>
+	}
+	
+	"inicialize x com zero e repita o conjunto de instruções enquanto o valor de x for menor que 10. Cada vez que 
+	o conjunto de instruções é executado, o valor do x é incrementado (x++). "
+	
+	for(double x=5; x<=10; x=x+0.5){
+		Conta de 5 ate 10 com passo de 0.5 - 5.5 - 6.0..............9.5 - 10.0
+	} 
+	for(int x=10; x>=0; x=x-2){
+		Conta de 10 até 0 com passo de -2 - 10 - 8 - 6 - 4 - 2 - 0
+	}
+	for(int x=a; x<=b; x++){
+		Conta de a até b com passo de 1
+	}
+	
+USO DO LAÇO while:
+	Um conjunto de instruções que são repetidas enquanto o resultado de uma expressão lógica (uma condição) é 
+	avaliado como verdadeiro. 
+	
+	while(<condição>){
+		<conjunto de instruções>
+	}
+	
+	O comando while avalia o resultado da expressão (condição) antes de executar as instruções contidas no bloco
+	{ }, assim é possivel que as instruções nunca sejam executadas, caso a condição seja inicialmente  falsa. Um 
+	problema tipico , relacionado à avaliação da condição while, é o laço infinito. Caso a condição nunca se torne
+	falsa, o laço sera repetido infinitamente.
+	
+	Outro tipo de laço condicional, o chamado do-while, que é bem parecido com o while, porém o conjunto de instruções
+	é executado antes da avaliação da expressão lógico. Isso faz com que estas instruções sejam executadas pelo menos
+	uma vez.
+	
+	do{
+	}while(<condição>);
+	
+OBS: Ao multiplicar um numero do tipo float por outro e armazenar em uma variavel, provavelmente a linguagem exigirá que essa
+variavel seja do tipo double, póis na multiplicação de 2 numeros float, pode haver perda de precisão  ou estouro na capacidade
+ de armazenamento.
