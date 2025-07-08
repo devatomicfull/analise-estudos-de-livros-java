@@ -15,12 +15,12 @@ Alguns códigos podem estar adaptados ou melhorados, com **explicações e anota
 
 ## 📑 Sumário
 
-1. [Java 2 - Ensino Didático (Sérgio Furgeri)](#java-2---ensino-didático-sérgio-furgeri)
+1. [Java 2 - Ensino Didático (Sérgio Furgeri)](#java2-furgeri)
 <!-- 2. [Outro Livro](#) (adicionar Futuramente outro livro) -->
 
 ---
 
-## 📘 Java 2 - Ensino Didático (Sérgio Furgeri)
+## <a id="java2-furgeri"></a>📘 Java 2 - Ensino Didático (Sérgio Furgeri)
 
 - Exercícios e exemplos baseados no livro **"Java 2 - Ensino Didático: Desenvolvendo e Implementando Aplicações"**, de **Sérgio Furgeri**.
 - Aplicação de conceitos fundamentais como:
