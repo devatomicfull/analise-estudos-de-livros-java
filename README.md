@@ -16,6 +16,7 @@ Alguns códigos podem estar adaptados ou melhorados, com **explicações e anota
 ## 📑 Sumário
 
 1. [Java 2 - Ensino Didático (Sérgio Furgeri)](#java2-furgeri)
+2. [Desbravando Java e Orientação a Objetos (Rodrigo Turini)](#desbranvadojava)
 <!-- 2. [Outro Livro](#) (adicionar Futuramente outro livro) -->
 
 ---
@@ -31,4 +32,9 @@ Alguns códigos podem estar adaptados ou melhorados, com **explicações e anota
 - Os exemplos foram feitos de forma **organizada, prática e funcional**, visando facilitar a revisão e reutilização do conteúdo.
 
 ---
+## <a id="desbrandojava"></a>📘 Desbravando Java e Orientação a Objetos : Um Guia para o iniciante da linguagem - (Rodrigo Turini) 
+
+- Revisão de java e o uso de boas alternativas e praticas
+- Focado em conceitos e indo direto para o codigo implementando
+
 
